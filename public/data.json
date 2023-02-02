@@ -1,0 +1,34 @@
+{
+  "teams": [
+    {
+      "slug": "u13",
+      "name": "U13"
+    },
+    {
+      "slug": "u14",
+      "name": "U14"
+    },
+    {
+      "slug": "u15",
+      "name": "U15",
+      "manager_1_position": "Manager",
+      "manager_1_name": "Steve Harris",
+      "manager_2_position": "Assistant Manager",
+      "manager_2_name": "Danny",
+      "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.",
+      "twitter_handle": "CityClarets",
+      "players": [
+        { "number": "1", "name": "Josh Wilson" },
+        { "number": "9", "name": "Luke Smith" }
+      ]
+    },
+    {
+      "slug": "u16",
+      "name": "U16"
+    },
+    {
+      "slug": "u18",
+      "name": "U18"
+    }
+  ]
+}

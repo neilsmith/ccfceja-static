@@ -5,22 +5,35 @@ export interface Props {
 
 const { title } = Astro.props;
 
-import { Image, Picture } from '@astrojs/image/components';
-import '../style/application.scss'
+import { getImage } from '@astrojs/image';
+import { Image } from '@astrojs/image/components';
+import '../style/application.scss';
 
+import Footer from '../components/Footer.astro';
 import logo from '../images/cropped-ccfc-badge.png';
+
+const favicon = await getImage({
+  src: import('../images/cropped-ccfc-badge.png'),
+  alt: "Favicon",
+  width: 64,
+  height: 64,
+});
+
+const response = await fetch('http://localhost:3000/data.json');
+const data = await response.json();
+const teams = data.teams;
 ---
 
 <!DOCTYPE html>
 <html>
   <head>
-		<title>{title}</title>
+    <title>{title}</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- favicon -->
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="/images/fav.png">
+    <link rel="shortcut icon" type="image/png" href={favicon.src}>
     <!-- bootstrap v4 css -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <!-- font-awesome css -->
@@ -110,9 +123,15 @@ import logo from '../images/cropped-ccfc-badge.png';
                                             <!-- Teams Menu Start -->
                                             <li class="current_page_item menu-item-has-children"><a href="#">Teams</a>
                                                 <ul class="sub-menu">
-                                                        <li>
-                                                            <a href="#">U15</a>
-                                                        </li>
+                                                  {
+                                                    teams.map((team) => (
+                                                      <li>
+                                                        <a href={`/teams/${team.slug}`}>
+                                                          {team.name}
+                                                        </a>
+                                                      </li>
+                                                    ))
+                                                  }
                                                 </ul>
                                             </li>
                                             <!-- Teams Menu End -->
@@ -120,30 +139,8 @@ import logo from '../images/cropped-ccfc-badge.png';
 
 
                                             <!--News Start-->
-                                            <li class="menu-item-has-children"> <a href="#">News</a>
-                                                <ul class="sub-menu">
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li class="menu-item-has-children"><a href="#">Blog Grid</a>
-                                                        <ul class="sub-menu">
-                                                            <li><a href="blog-2-column.html">Blog 2 Column</a></li>
-                                                            <li><a href="blog-3-column.html">Blog 3 Column</a></li>
-                                                            <li class="last-item"><a href="blog-4-column.html">Blog 4 Column</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="menu-item-has-children"><a href="#">Blog Sidebar</a>
-                                                        <ul class="sub-menu">
-                                                            <li><a href="blog-left.html">Blog Left Sidebar</a></li>
-                                                            <li class="last-item"><a href="blog-right.html">Blog Right Sidebar</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="menu-item-has-children last-item"><a href="#">Single Post</a>
-                                                        <ul class="sub-menu">
-                                                            <li><a href="blog-single-left.html">Post Left Sidebar</a></li>
-                                                            <li><a href="blog-single-right.html">Post Right Sidebar</a></li>
-                                                            <li class="last-item"><a href="blog-single.html">Full Width Post</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
+                                            <li>
+                                              <a href="#">News</a>
                                             </li>
                                             <!--Point Table End-->
 
@@ -198,113 +195,7 @@ import logo from '../images/cropped-ccfc-badge.png';
     <!--Full width header End-->
 
     <slot />
-
-    <!-- Footer Start -->
-    <footer id="rs-footer" class="rs-footer pt-137 md-pt-70 sm-pt-65">
-        <!-- Sponsor Logo Section Start -->
-        <div class="rs-sponsor pb-35 md-pb-60 sm-pb-50">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 offset-lg-2 col-md-8 offset-md-2">
-                        <div class="row">
-                            <div class="col-lg-3 col-md-4 col-6">
-                                <div class="logos">
-                                    <a href="#"><img src="images/sponsor/1.png" alt=""></a>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-6">
-                                <div class="logos">
-                                    <a href="#"><img src="images/sponsor/2.png" alt=""></a>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-6">
-                                <div class="logos">
-                                    <a href="#"><img src="images/sponsor/3.png" alt=""></a>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-6">
-                                <div class="logos">
-                                    <a href="#"><img src="images/sponsor/4.png" alt=""></a>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-6">
-                                <div class="logos">
-                                    <a href="#"><img src="images/sponsor/5.png" alt=""></a>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-6">
-                                <div class="logos">
-                                    <a href="#"><img src="images/sponsor/6.png" alt=""></a>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-6">
-                                <div class="logos">
-                                    <a href="#"><img src="images/sponsor/7.png" alt=""></a>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-6">
-                                <div class="logos">
-                                    <a href="#"><img src="images/sponsor/8.png" alt=""></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Sponsor Logo Section End -->
-
-        <!-- Footer Bottom Section Start -->
-        <div class="footer-bootom">
-            <div class="container">
-                <div class="row rs-vertical-middle">
-                    <div class="col-md-7">
-                        <div class="copyright">
-                            <p>© 2019 Khelo. All Rights Reserved. Designed by <a href="http://rstheme.com/" target="_blank">RSTheme</a></p>
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="footer-share text-right">
-                            <ul>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Footer Bottom Section End -->
-    </footer>
-    <!-- Footer End -->
-
-    <!-- Scrool to Top Start -->
-    <div id="scrollUp">
-        <i class="fa fa-angle-up"></i>
-    </div>
-    <!-- Scrool to Top End -->
-
-    <!-- Search Modal Start -->
-    <div aria-hidden="true" class="modal fade search-modal" role="dialog" tabindex="-1">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true" class="flaticon-cross"></span>
-        </button>
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="search-block clearfix">
-                    <form>
-                        <div class="form-group">
-                            <input class="form-control" placeholder="Search Here.." type="text">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Search Modal End -->
-
+    <Footer />
 
     <!-- modernizr js -->
     <script is:inline src="/js/modernizr-2.8.3.min.js"></script>
