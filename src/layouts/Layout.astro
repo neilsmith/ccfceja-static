@@ -19,9 +19,6 @@ const favicon = await getImage({
   height: 64,
 });
 
-const response = await fetch('http://localhost:3000/data.json');
-const data = await response.json();
-const teams = data.teams;
 ---
 
 <!DOCTYPE html>
@@ -93,102 +90,10 @@ const teams = data.teams;
                         <div class="col-lg-6">
                             <h1>Chelmsford City EJA</h1>
                         </div>
-                        <div class="col-lg-4 mobile-menu-area">
-                            <div class="rs-menu-area display-flex-center">
-                                <div class="main-menu">
-                                    <a class="rs-menu-toggle">
-                                        <i class="fa fa-bars"></i>
-                                    </a>
-                                    <nav class="rs-menu">
-                                        <div class="expand-btn">
-                                            <span>
-                                                <a id="nav-expander" class="nav-expander">
-                                                    <ul class="offcanvas-icon">
-                                                        <li>
-                                                            <span class="hamburger1"></span>
-                                                            <span class="hamburger2"></span>
-                                                            <span class="hamburger3"></span>
-                                                        </li>
-                                                    </ul>
-                                                </a>
-                                            </span>
-                                        </div>
-                                        <ul class="nav-menu text-right">
-                                            <!-- Home -->
-                                            <li class="current-menu-item"><a href="/">Home</a></li>
-                                            <!-- End Home -->
-
-
-
-                                            <!-- Teams Menu Start -->
-                                            <li class="current_page_item menu-item-has-children"><a href="#">Teams</a>
-                                                <ul class="sub-menu">
-                                                  {
-                                                    teams.map((team) => (
-                                                      <li>
-                                                        <a href={`/teams/${team.slug}`}>
-                                                          {team.name}
-                                                        </a>
-                                                      </li>
-                                                    ))
-                                                  }
-                                                </ul>
-                                            </li>
-                                            <!-- Teams Menu End -->
-
-
-
-                                            <!--News Start-->
-                                            <li>
-                                              <a href="#">News</a>
-                                            </li>
-                                            <!--Point Table End-->
-
-                                            <!--Contact Menu Start-->
-                                            <li class="last-item"><a href="contact.html">Contact</a></li>
-                                            <!--Contact Menu End-->
-                                        </ul> <!-- //.nav-menu -->
-                                    </nav>
-                                </div> <!-- //.main-menu -->
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
             <!-- Menu End -->
-
-            <!-- Canvas Menu start -->
-            <nav class="right_menu_togle hidden-md">
-                <div class="close-btn"><span id="nav-close" class="text-center"><i class="flaticon-cross"></i></span></div>
-                <div class="canvas-logo">
-                    <a href="index.html"><img src="images/logo-dark.png" alt="logo"></a>
-                </div>
-                <div class="sidebarnav_menu">
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li class="active"><a href="about.html">About</a></li>
-                        <li><a href="match-fixtures.html">Match Fixtures</a></li>
-                        <li><a href="blog.html">News</a></li>
-                        <li><a href="shop.html">Shop</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="canvas-contact">
-                    <h5 class="canvas-contact-title">Contact Info</h5>
-                    <ul class="contact">
-                        <li><i class="fa fa-globe"></i>New York, USA</li>
-                        <li><i class="fa fa-phone"></i><a href="tel:+125427263512">+125427263512</a></li>
-                        <li><i class="fa fa-envelope"></i><a href="mailto:support@rstheme.com">support@rstheme.com</a></li>
-                    </ul>
-                    <ul class="social">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                    </ul>
-                </div>
-            </nav>
-            <!-- Canvas Menu end -->
         </header>
         <!--Header End-->
     </div>
