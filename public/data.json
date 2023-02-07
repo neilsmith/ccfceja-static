@@ -1,34 +1,39 @@
 {
   "teams": [
     {
-      "slug": "u13",
-      "name": "U13"
-    },
-    {
-      "slug": "u14",
-      "name": "U14"
-    },
-    {
       "slug": "u15",
       "name": "U15",
       "manager_1_position": "Manager",
       "manager_1_name": "Steve Harris",
       "manager_2_position": "Assistant Manager",
-      "manager_2_name": "Danny",
-      "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.",
+      "manager_2_name": "Danny Wood",
+      "manager_3_position": "Coach",
+      "manager_3_name": "Giovanni De Dominicis",
+      "description": "",
       "twitter_handle": "CityClarets",
       "players": [
         { "number": "1", "name": "Josh Wilson" },
-        { "number": "9", "name": "Luke Smith" }
+        { "number": "3", "name": "James Farrow" },
+        { "number": "4", "name": "Lewis Hayes" },
+        { "number": "5", "name": "Henry Obeng" },
+        { "number": "6", "name": "Henry Hawkins" },
+        { "number": "7", "name": "Ben Steadman" },
+        { "number": "8", "name": "George Harris" },
+        { "number": "9", "name": "Luke Smith" },
+        { "number": "10", "name": "Charlie George" },
+        { "number": "11", "name": "Thanasis Karamitsios" },
+        { "number": "12", "name": "Owen Lutete" },
+        { "number": "14", "name": "Beau Pelosi" },
+        { "number": "15", "name": "Max Olley" },
+        { "number": "16", "name": "Alex Tsvetkov" },
+        { "number": "17", "name": "Zach Lund" },
+        { "number": "18", "name": "Joel Bruton" }
+      ],
+      "sponsors": [
+        { "name": "Earlstoke Laundry Services", "logo": "/logos/earlstoke.jpg" },
+        { "name": "Carvosso Curtains and Soft Furnishings", "logo": "/logos/carvosso.jpg" },
+        { "name": "HCH", "logo": "/logos/hch.jpg" }
       ]
-    },
-    {
-      "slug": "u16",
-      "name": "U16"
-    },
-    {
-      "slug": "u18",
-      "name": "U18"
     }
   ]
 }

@@ -1,12 +1,15 @@
 ---
+import { Image } from '@astrojs/image/components';
 import Layout from '../layouts/Layout.astro';
+import pitch from '../images/pitch.jpg';
+import pitchClaret from '../images/pitch-claret.jpg';
 ---
 
-<Layout title="Chelmsford City FC EJA">
+<Layout title="Chelmsford City FC EJA Section">
   <!-- Breadcrumbs Section Start -->
   <div class="rs-breadcrumbs">
       <div class="breadcrumbs-wrap">
-          <img src="images/breadcrumbs/inner11.jpg" alt="Breadcrumbs Image">
+          <Image src={pitchClaret} width={1024} height={200} fit="cover" position="east" alt=""></Image>
           <div class="breadcrumbs-inner">
               <div class="container">
                   <div class="breadcrumbs-text">
@@ -30,23 +33,29 @@ import Layout from '../layouts/Layout.astro';
           <div class="row align-items-center">
               <div class="col-lg-5 md-mb-30">
                   <div class="about-img">
-                      <img src="images/about/about-inner.jpg" alt="">
+                    <Image src={pitch} width={487} height={454} fit="outside" alt=""></Image>
                   </div>
               </div>
               <div class="col-lg-7 pl-40 col-padding-md">
                   <div class="title-style mb-50 md-mb-30">
-                      <h2 class="margin-0 uppercase">Chelmsford City FC EJA</h2>
+                      <h2 class="margin-0 uppercase">Chelmsford City FC EJA Section</h2>
                       <span class="line-bg y-b left-line pt-10"></span>
                   </div>
                   <div class="about-wrap">
-                      <p class="title-color">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</p>
-                      <ul class="stylelisting inner-about">
-                          <li>Diam sed mattis facilisi, elementum pellentesque phasellus.</li>
-                          <li>Dis odio accumsan nullam aptent tempor porttitor enim eget.</li>
-                          <li>Proin libero ut felis iaculis turpis ad facilisis venenatis mollis!</li>
-                          <li>Natoque pharetra, sed nullam magnis dictumst hendrerit id proin quis.</li>
-                          <li>Orci primis semper elementum montes curabitur nunc ultrices.</li>
-                      </ul>
+                    <h6>What is the EJA?</h6>
+                    <p class="title-color">
+                      The Eastern Junior Alliance is the leading youth development football league in the
+                      South East of England for ages U13-U18. Its purpose being the stepping stone between
+                      regular youth grassroots to the academy levels of the professional ranks.
+                    </p>
+
+                    <h6>Who are we?</h6>
+                    <p class="title-color">
+                      Our section is comprised of our oldest youth teams who play at the most competitive grassroots levels.
+                      At Chelmsford City we offer the opportunity to improve playing ability within a safe & encouraging environment.
+                      We strongly believe in the long-term development of players & want every young person to achieve their full potential.
+                      At CCFC we strive to promote fair play, respect and positivity.
+                    </p>
                   </div>
               </div>
           </div>

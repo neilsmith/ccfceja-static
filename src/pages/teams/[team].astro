@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { Image } from '@astrojs/image/components';
 
 export async function getStaticPaths() {
   const response = await fetch('http://localhost:3000/data.json');
@@ -15,16 +16,18 @@ const { team } = Astro.params;
 const response = await fetch('http://localhost:3000/data.json');
 const data = await response.json();
 const current_team = data.teams.find((t) => { return (t.slug == team) })
+
+import photo from '../../images/u15.jpg';
 ---
 <Layout title={current_team.name}>
   <!-- Breadcrumbs Section Start -->
   <div class="rs-breadcrumbs">
       <div class="breadcrumbs-wrap">
-          <img src="/images/breadcrumbs/inner11.jpg" alt="Breadcrumbs Image">
+          <Image src="/src/images/pitch-claret.jpg" width={1024} height={200} fit="cover" position="east" alt=""></Image>
           <div class="breadcrumbs-inner">
               <div class="container">
                   <div class="breadcrumbs-text">
-                      <h1 class="breadcrumbs-title mb-17">{ current_team.name }</h1>
+                      <h1 class="breadcrumbs-title mb-17">{ current_team.name } Team</h1>
                       <div class="categories">
                           <ul>
                               <li><a href="index.html">Home</a></li>
@@ -54,10 +57,6 @@ const current_team = data.teams.find((t) => { return (t.slug == team) })
           <div class="club-details center-md mb-30">
             <ul class="team-info-list">
               <li>
-                  <strong>Age Group</strong>
-                  <span>{ current_team.name }</span>
-              </li>
-              <li>
                   <strong>{ current_team.manager_1_position }</strong>
                   <span>{ current_team.manager_1_name }</span>
               </li>
@@ -84,21 +83,25 @@ const current_team = data.teams.find((t) => { return (t.slug == team) })
   <!-- About/Squad Block Start -->
   <div class="rs-single-club pt-80 pb-80">
     <div class="container">
+      <div class="title-style mb-50 md-mb-30">
+        <h2 class="margin-0 uppercase">Meet the { current_team.name }<small>'s</small></h2>
+        <span class="line-bg y-b left-line pt-10"></span>
+      </div>
+
       <div class="row">
         <div class="col-lg-8 col-md-12 md-mb-30 mb-100">
-          <div class="title-style mb-50 md-mb-30">
-            <h2 class="margin-0 uppercase">About the { current_team.name }<small>'s</small></h2>
-            <span class="line-bg y-b left-line pt-10"></span>
-          </div>
-
           <div class="about-wrap">
-            <p class="title-color">
-              { current_team.description }
-            </p>
+            { current_team.description &&
+              <p class="title-color">
+                { current_team.description }
+              </p>
+            }
+
+            <Image src={photo} width={800} />
           </div>
         </div>
         <div class="col-lg-4 col-md-12 md-mb-30">
-          <div class="rs-pointtable inner-style">
+          <div class="rs-pointtable inner-style condensed">
             <div class="container">
               <div class="point-table-wrap">
                 <table>
@@ -152,4 +155,30 @@ const current_team = data.teams.find((t) => { return (t.slug == team) })
 
     </div>
   </div>
+
+    <!-- Sponsor Logo Section Start -->
+    <div class="rs-sponsor pb-35 md-pb-60 sm-pb-50">
+        <div class="container">
+            <h3 class="pt-100">Team Sponsors</h3>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        {
+                          current_team.sponsors.map((sponsor) => (
+
+                          <div class="col">
+                              <div class="logos">
+                                  <a href="#">
+                                    <Image width={150} height={150} src={ sponsor.logo } fit="contain" background="white" alt="" />
+                                  </a>
+                              </div>
+                          </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sponsor Logo Section End -->
+
 </Layout>

@@ -5562,6 +5562,12 @@ blockquote {
     }
   }
 
+  &.condensed {
+    th, td {
+      padding: 4px 20px !important
+    }
+  }
+
   &.rs-club-list {
     .all-club-list {
       display: block;
@@ -7780,6 +7786,8 @@ blockquote {
 -------------------------------------*/
 .rs-sponsor {
   .logos {
+    text-align: center;
+
     a {
       img {
         filter: grayscale(100%);
@@ -7928,7 +7936,7 @@ blockquote {
     36. Footer Section CSS
 -------------------------------------*/
 .rs-footer {
-  background: url(images/background/footer-bg.jpg);
+  background: white;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
