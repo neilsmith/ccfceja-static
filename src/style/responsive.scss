@@ -520,6 +520,7 @@
     position: relative;
     z-index: 11;
     max-width: 130px !important;
+    object-fit: contain;
   }
 
   #rs-header .mobile-menu-area {
