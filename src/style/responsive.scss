@@ -419,6 +419,10 @@
 }
 
 @media only screen and (max-width: 991px) {
+  .full-width-header .rs-header .menu-area h1 {
+      text-align: center;
+  }
+
   .hidden-md {
     display: none !important;
   }
@@ -521,6 +525,7 @@
     z-index: 11;
     max-width: 130px !important;
     object-fit: contain;
+    margin-top: 1em;
   }
 
   #rs-header .mobile-menu-area {
