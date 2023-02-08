@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import { Image } from '@astrojs/image/components';
 
 export async function getStaticPaths() {
-  const response = await fetch('http://localhost:3000/data.json');
+  const response = await fetch('https://raw.githubusercontent.com/neilsmith/ccfceja-static/master/public/data.json');
   const data = await response.json();
 
   return data.teams.map((team) => {
@@ -13,9 +13,12 @@ export async function getStaticPaths() {
 
 const { team } = Astro.params;
 
-const response = await fetch('http://localhost:3000/data.json');
+const response = await fetch('https://raw.githubusercontent.com/neilsmith/ccfceja-static/master/public/data.json');
 const data = await response.json();
 const current_team = data.teams.find((t) => { return (t.slug == team) })
+
+import TwitterFeed from "../../components/TwitterFeed.astro";
+import FullTimeTable from '../../components/FullTimeTable.astro';
 
 import photo from '../../images/u15.jpg';
 ---
@@ -134,21 +137,27 @@ import photo from '../../images/u15.jpg';
     <div class="container">
       <div class="row">
         <div class="col-lg-6 col-md-12 md-mb-30 mb-100">
-          <a class="twitter-timeline" data-height="500" href={ "https://twitter.com/" + current_team.twitter_handle }">Tweets by { current_team.twitter_handle }</a>
-          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-        </div>
-        <div class="col-lg-6 col-md-12 md-mb-30 mb-100">
           <div class="title-style mb-20">
             <h2 class="margin-0 uppercase">League Table</h2>
             <span class="line-bg y-b left-line pt-10"></span>
           </div>
 
-          <div id="lrep865089825" style="width: 100%"></div>
-          <script language="javascript" type="text/javascript">
-            var lrcode = '865089825'
-          </script>
-          <script language="javsscript" type="text/javascript" src="https://fulltime-league.thefa.com/client/api/cs1.js?v2"></script>
+          <FullTimeTable lrcode="220793549" divisionseason="401835304" />
         </div>
+
+        <div class="col-lg-6 col-md-12 md-mb-30 mb-100">
+          <div class="title-style mb-20">
+            <h2 class="margin-0 uppercase">Upcoming Fixtures</h2>
+            <span class="line-bg y-b left-line pt-10"></span>
+          </div>
+
+          <FullTimeTable lrcode="954012648" divisionseason="401835304" />
+        </div>
+
+        <div class="col-lg-12 col-md-12 md-mb-30 mb-100">
+          <TwitterFeed twitter_handle={ current_team.twitter_handle } />
+        </div>
+
       </div>
       <!-- Table/Blog Post Block End -->
 

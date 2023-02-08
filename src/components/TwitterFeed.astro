@@ -1,0 +1,10 @@
+---
+const { twitter_handle } = Astro.props;
+---
+<div class="title-style mb-20">
+  <h2 class="margin-0 uppercase">Twitter Feed</h2>
+  <span class="line-bg y-b left-line pt-10"></span>
+</div>
+
+<a class="twitter-timeline" data-height="800" href={ "https://twitter.com/" + twitter_handle }">Loading tweets by { twitter_handle }</a>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
