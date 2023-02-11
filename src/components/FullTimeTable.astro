@@ -5,7 +5,7 @@ const divId = "lrep" + lrcode;
 const externalLink = "https://fulltime.thefa.com/index.html?divisionseason=" + divisionseason;
 ---
 
-<div id={ divId } style="width: 100%;">
+<div id={ divId } class="fulltime-table" style="width: 100%;">
   Data loading....
   <a href={ externalLink }>Load League</a>
   <br/><br/>
@@ -16,3 +16,7 @@ const externalLink = "https://fulltime.thefa.com/index.html?divisionseason=" + d
   var lrcode = document.currentScript.dataset.lrcode;
 </script>
 <script language="Javascript" type="text/javascript" src="https://fulltime.thefa.com/client/api/cs1.js"></script>
+
+<style>
+  div.fulltime-table { min-height: 400px; background-color: white }
+</style>
