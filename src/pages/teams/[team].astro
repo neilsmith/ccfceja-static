@@ -134,10 +134,10 @@ import pitchClaret from '../../images/pitch-claret.jpg';
   <!-- About/Squad Block End -->
 
   <!-- Table/Blog Post Block Start -->
-  <div class="rs-single-club sec-bg pt-80 pb-80">
+  <div class="rs-single-club sec-bg pt-30 pb-30">
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 col-md-12 md-mb-30 mb-100">
+        <div class="col-lg-6 col-md-12 mb-30">
           <div class="title-style mb-20">
             <h2 class="margin-0 uppercase">League Table</h2>
             <span class="line-bg y-b left-line pt-10"></span>
@@ -146,7 +146,7 @@ import pitchClaret from '../../images/pitch-claret.jpg';
           <FullTimeTable lrcode="220793549" divisionseason="401835304" />
         </div>
 
-        <div class="col-lg-6 col-md-12 md-mb-30 mb-100">
+        <div class="col-lg-6 col-md-12 mb-30">
           <div class="title-style mb-20">
             <h2 class="margin-0 uppercase">Upcoming Fixtures</h2>
             <span class="line-bg y-b left-line pt-10"></span>
@@ -154,41 +154,46 @@ import pitchClaret from '../../images/pitch-claret.jpg';
 
           <FullTimeTable lrcode="954012648" divisionseason="401835304" />
         </div>
-
-        <div class="col-lg-6 col-md-12 mb-30">
-          <TwitterFeed twitter_handle={ current_team.twitter_handle } />
-        </div>
-
       </div>
       <!-- Table/Blog Post Block End -->
-
-
     </div>
   </div>
 
-    <!-- Sponsor Logo Section Start -->
-    <div class="rs-sponsor pb-35 md-pb-60 sm-pb-50">
-        <div class="container">
-            <h3 class="pt-100">Team Sponsors</h3>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="row">
-                        {
-                          current_team.sponsors.map((sponsor) => (
+  <!-- Sponsor Logo Section Start -->
+  <div class="rs-sponsor pb-35 md-pb-60 sm-pb-50">
+      <div class="container">
+          <h3 class="pt-30">Team Sponsors</h3>
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="row">
+                      {
+                        current_team.sponsors.map((sponsor) => (
 
-                          <div class="col">
-                              <div class="logos">
-                                  <a href="#">
-                                    <Image width={150} height={150} src={ sponsor.logo } fit="contain" background="white" alt="" />
-                                  </a>
-                              </div>
-                          </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
+                        <div class="col">
+                            <div class="logos">
+                                <a href={ sponsor.url } target="_blank">
+                                  <Image width={150} height={150} src={ sponsor.logo } fit="contain" background="white" alt={ sponsor.name } />
+                                </a>
+                            </div>
+                        </div>
+                      ))}
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Sponsor Logo Section End -->
+
+  <!-- Twitter Section Start -->
+  <div class="rs-single-club sec-bg pt-80 pb-80">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-12 mb-30">
+          <TwitterFeed twitter_handle={ current_team.twitter_handle } />
         </div>
+      </div>
     </div>
-    <!-- Sponsor Logo Section End -->
+  </div>
+  <!-- Twitter Section End -->
 
 </Layout>
