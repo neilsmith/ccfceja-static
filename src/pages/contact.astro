@@ -1,0 +1,71 @@
+---
+import { Image } from '@astrojs/image/components';
+import Layout from '../layouts/Layout.astro';
+
+import pitchClaret from '../images/pitch-claret.jpg';
+
+const response = await fetch('https://raw.githubusercontent.com/neilsmith/ccfceja-static/master/public/data.json');
+const data = await response.json();
+const teams = data.teams;
+
+---
+
+<Layout title="Chelmsford City FC EJA - Contact">
+  <div class="rs-contact">
+    <Image src={pitchClaret} width={1420} height={277} fit="cover" position="east" format="webp" alt="" />
+
+    <div class="contact-part sec-bg pt-100 pb-100 md-pt-80 md-pb-80">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-6 md-mb-30">
+                  <div class="g-map">
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9879.921575386752!2d0.4418807683609993!3d51.75168207967597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8eb9356d18371%3A0x7bf92e75d034962b!2sChelmsford%20City%20Football%20Club!5e0!3m2!1sen!2suk!4v1676136502073!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                  </div>
+              </div>
+              <div class="col-lg-6 pl-50 md-pl-15">
+                  <div class="contact-area">
+                      <div class="title-style mb-50">
+                          <h2 class="margin-0 uppercase">Get in Touch</h2>
+                          <span class="line-bg left-line pt-10 y-b"></span>
+                      </div>
+                      <div id="form-messages"></div>
+                      <form id="contact-form" class="contact-form" method="post" action="mailer.php">
+                          <div class="row">
+                              <div class="col-lg-6">
+                                  <div class="from-control">
+                                      <input name="name" type="text" placeholder="Name" id="name" required="required">
+                                  </div>
+                              </div>
+                              <div class="col-lg-6">
+                                  <div class="from-control">
+                                      <input name="email" type="email" placeholder="E-Mail" id="email" required="required">
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="from-control">
+                              <select name="message" class="form-select">
+                                <option>General Enquiry</option>
+                                {
+                                  teams.map((team) => (
+                                    <option>{ team.name } Manager</option>
+                                  ))
+                                }
+
+                              </select>
+                          </div>
+
+                          <div class="from-control">
+                              <textarea name="message" placeholder="Your Message Here" id="message" required="required"></textarea>
+                          </div>
+                          <div class="submit-btn">
+                              <button class="readon" type="submit">Send Message</button>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</Layout>

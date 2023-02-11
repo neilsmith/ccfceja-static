@@ -113,13 +113,11 @@ const teams = data.teams;
                                         </div> -->
                                         <ul class="nav-menu text-right">
                                             <!-- Home -->
-                                            <li class="current-menu-item"><a href="/">Home</a></li>
+                                            <li><a href="/">Home</a></li>
                                             <!-- End Home -->
 
-
-
                                             <!-- Teams Menu Start -->
-                                            <li class="current_page_item menu-item-has-children"><a href="#">Teams</a>
+                                            <li class="menu-item-has-children"><a href="#">Teams</a>
                                                 <ul class="sub-menu">
                                                   {
                                                     teams.map((team) => (
@@ -134,7 +132,9 @@ const teams = data.teams;
                                             </li>
                                             <!-- Teams Menu End -->
 
-
+                                            <li>
+                                              <a href="/contact">Contact</a>
+                                            </li>
 
                                             <!--News Start-->
                                             <!-- <li>
