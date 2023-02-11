@@ -30,9 +30,9 @@
         { "number": "18", "name": "Joel Bruton" }
       ],
       "sponsors": [
-        { "name": "Earlstoke Laundry Services", "logo": "/logos/earlstoke.jpg" },
-        { "name": "Carvosso Curtains and Soft Furnishings", "logo": "/logos/carvosso.jpg" },
-        { "name": "HCH", "logo": "/logos/hch.jpg" }
+        { "name": "Earlstoke Laundry Services", "logo": "/logos/earlstoke.jpg", "url": "https://www.earlstokelaundry.co.uk" },
+        { "name": "Carvosso Curtains and Soft Furnishings", "logo": "/logos/carvosso.jpg", "url": "http://www.carvossocurtains.co.uk" },
+        { "name": "HCH", "logo": "/logos/hch.jpg", "url": "http://www.hch-heating.com" }
       ]
     }
   ]
