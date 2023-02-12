@@ -1,0 +1,13 @@
+{
+  "news": [
+    {
+      "slug": "1",
+      "title": "U12 Open Training Sessions",
+      "content": "<p>Our CCYFC U12 team are hosting open training on Saturdays with a focus on preparation & invitations to trials for the next U13 EJA squad 23/24 season.</p><p><a href=\"/contact\">Contact us</a> to book a space.</p>",
+      "author": "Jamie",
+      "day": "12",
+      "month": "Feb",
+      "image": "/news_1.jpg"
+    }
+  ]
+}

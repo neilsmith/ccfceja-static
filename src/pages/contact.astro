@@ -11,9 +11,28 @@ const teams = data.teams;
 ---
 
 <Layout title="Chelmsford City FC EJA - Contact Us">
-  <div class="rs-contact">
-    <Image src={pitchClaret} width={1420} height={277} fit="cover" position="east" format="webp" alt="" />
+  <!-- Breadcrumbs Section Start -->
+  <div class="rs-breadcrumbs">
+      <div class="breadcrumbs-wrap">
+          <Image src={ pitchClaret } width={1024} height={200} fit="cover" position="east" alt=""></Image>
+          <div class="breadcrumbs-inner">
+              <div class="container">
+                  <div class="breadcrumbs-text">
+                      <h1 class="breadcrumbs-title mb-17">Contact Us</h1>
+                      <div class="categories">
+                          <ul>
+                              <li><a href="/">Home</a></li>
+                              <li class="active">Contact Us</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Breadcrumbs Section End -->
 
+  <div class="rs-contact">
     <div class="contact-part sec-bg pt-100 pb-100 md-pt-80 md-pb-80">
       <div class="container">
           <div class="row">
@@ -33,12 +52,12 @@ const teams = data.teams;
                           <div class="row">
                               <div class="col-lg-6">
                                   <div class="from-control">
-                                      <input name="name" type="text" placeholder="Name" id="name" required="required">
+                                      <input name="name" type="text" placeholder="Your Name" id="name" required="required">
                                   </div>
                               </div>
                               <div class="col-lg-6">
                                   <div class="from-control">
-                                      <input name="email" type="email" placeholder="E-Mail" id="email" required="required">
+                                      <input name="email" type="email" placeholder="Your E-Mail" id="email" required="required">
                                   </div>
                               </div>
                           </div>
@@ -56,7 +75,7 @@ const teams = data.teams;
                           </div>
 
                           <div class="from-control">
-                              <textarea name="message" placeholder="Your Message Here" id="message" required="required"></textarea>
+                              <textarea name="message" placeholder="Your Message" id="message" required="required"></textarea>
                           </div>
                           <div class="submit-btn">
                               <button class="readon" type="submit">Send Message</button>
