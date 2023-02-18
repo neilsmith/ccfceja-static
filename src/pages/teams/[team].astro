@@ -3,27 +3,22 @@ import Layout from '../../layouts/Layout.astro';
 import { Image } from '@astrojs/image/components';
 
 export async function getStaticPaths() {
-  const response = await fetch('https://raw.githubusercontent.com/neilsmith/ccfceja-static/master/public/data.json');
+  const response = await fetch('https://raw.githubusercontent.com/neilsmith/ccfceja-static/preview/public/data.json');
+  // const response = await fetch('http://localhost:3000/data.json');
   const data = await response.json();
 
   return data.teams.map((team) => {
-    return { params: { team: team.slug }}
+    return { params: { team: team.slug }, props: { team: team }}
   });
 }
 
-const { team } = Astro.params;
-
-const response = await fetch('https://raw.githubusercontent.com/neilsmith/ccfceja-static/master/public/data.json');
-const data = await response.json();
-const current_team = data.teams.find((t) => { return (t.slug == team) })
+const { team } = Astro.props;
 
 import TwitterFeed from "../../components/TwitterFeed.astro";
 import FullTimeTable from '../../components/FullTimeTable.astro';
-
-import photo from '../../images/u15.jpg';
 import pitchClaret from '../../images/pitch-claret.jpg';
 ---
-<Layout title={`Chelmsford City FC EJA - ${current_team.name}`}>
+<Layout title={`Chelmsford City FC EJA - ${team.name}`}>
   <!-- Breadcrumbs Section Start -->
   <div class="rs-breadcrumbs">
       <div class="breadcrumbs-wrap">
@@ -31,11 +26,11 @@ import pitchClaret from '../../images/pitch-claret.jpg';
           <div class="breadcrumbs-inner">
               <div class="container">
                   <div class="breadcrumbs-text">
-                      <h1 class="breadcrumbs-title mb-17">{ current_team.name } Team</h1>
+                      <h1 class="breadcrumbs-title mb-17">{ team.name } Team</h1>
                       <div class="categories">
                           <ul>
                               <li><a href="/">Home</a></li>
-                              <li class="active">{ current_team.name }</li>
+                              <li class="active">{ team.name }</li>
                           </ul>
                       </div>
                   </div>
@@ -52,7 +47,7 @@ import pitchClaret from '../../images/pitch-claret.jpg';
         <div class="col-lg-3 col-md-12">
           <div class="rs-count d-flex justify-content-center mb-60">
               <div class="rs-counter-list">
-                  <h2 class="counter-number">{ current_team.players.length }</h2>
+                  <h2 class="counter-number">{ team.players.length }</h2>
                   <h4 class="counter-text">Squad Size</h4>
               </div>
           </div>
@@ -61,20 +56,20 @@ import pitchClaret from '../../images/pitch-claret.jpg';
           <div class="club-details center-md mb-30">
             <ul class="team-info-list">
               <li>
-                  <strong>{ current_team.manager_1_position }</strong>
-                  <span>{ current_team.manager_1_name }</span>
+                  <strong>{ team.manager_1_position }</strong>
+                  <span>{ team.manager_1_name }</span>
               </li>
               <li>
-                  <strong>{ current_team.manager_2_position }</strong>
-                  <span>{ current_team.manager_2_name }</span>
+                  <strong>{ team.manager_2_position }</strong>
+                  <span>{ team.manager_2_name }</span>
               </li>
               <li>
-                  <strong>{ current_team.manager_3_position }</strong>
-                  <span>{ current_team.manager_3_name }</span>
+                  <strong>{ team.manager_3_position }</strong>
+                  <span>{ team.manager_3_name }</span>
               </li>
               <li>
-                  <strong>{ current_team.manager_4_position }</strong>
-                  <span>{ current_team.manager_4_name }</span>
+                  <strong>{ team.manager_4_position }</strong>
+                  <span>{ team.manager_4_name }</span>
               </li>
             </ul>
           </div>
@@ -88,20 +83,22 @@ import pitchClaret from '../../images/pitch-claret.jpg';
   <div class="rs-single-club pt-80 pb-80">
     <div class="container">
       <div class="title-style mb-50 md-mb-30">
-        <h2 class="margin-0 uppercase">Meet the { current_team.name }<small>'s</small></h2>
+        <h2 class="margin-0 uppercase">Meet the { team.name }<small>'s</small></h2>
         <span class="line-bg y-b left-line pt-10"></span>
       </div>
 
       <div class="row">
         <div class="col-lg-8 col-md-12 md-mb-30 mb-100">
           <div class="about-wrap">
-            { current_team.description &&
+            { team.description &&
               <p class="title-color">
-                { current_team.description }
+                { team.description }
               </p>
             }
 
-            <Image src={photo} width={800} />
+            { team.photo &&
+              <Image src={ team.photo } width={800} height={500} format="jpeg" />
+            }
           </div>
         </div>
         <div class="col-lg-4 col-md-12 md-mb-30">
@@ -115,7 +112,7 @@ import pitchClaret from '../../images/pitch-claret.jpg';
                         <th>Player</th>
                     </tr>
                     {
-                      current_team.players.map((player) => (
+                      team.players.map((player) => (
                         <tr>
                             <td>{ player.number }</td>
                             <td>{ player.name }</td>
@@ -133,67 +130,73 @@ import pitchClaret from '../../images/pitch-claret.jpg';
   </div>
   <!-- About/Squad Block End -->
 
-  <!-- Table/Blog Post Block Start -->
-  <div class="rs-single-club sec-bg pt-30 pb-30">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 col-md-12 mb-30">
-          <div class="title-style mb-20">
-            <h2 class="margin-0 uppercase">League Table</h2>
-            <span class="line-bg y-b left-line pt-10"></span>
-          </div>
-
-          <FullTimeTable lrcode="220793549" divisionseason="401835304" />
-        </div>
-
-        <div class="col-lg-6 col-md-12 mb-30">
-          <div class="title-style mb-20">
-            <h2 class="margin-0 uppercase">Upcoming Fixtures</h2>
-            <span class="line-bg y-b left-line pt-10"></span>
-          </div>
-
-          <FullTimeTable lrcode="954012648" divisionseason="401835304" />
-        </div>
-      </div>
-      <!-- Table/Blog Post Block End -->
-    </div>
-  </div>
-
-  <!-- Sponsor Logo Section Start -->
-  <div class="rs-sponsor pb-35 md-pb-60 sm-pb-50">
+  { team.fa_embeds &&
+    <!-- Table/Blog Post Block Start -->
+    <div class="rs-single-club sec-bg pt-30 pb-30">
       <div class="container">
-          <h3 class="pt-30">Team Sponsors</h3>
-          <div class="row">
-              <div class="col-lg-12">
-                  <div class="row">
-                      {
-                        current_team.sponsors.map((sponsor) => (
+        <div class="row">
+          <div class="col-lg-6 col-md-12 mb-30">
+            <div class="title-style mb-20">
+              <h2 class="margin-0 uppercase">League Table</h2>
+              <span class="line-bg y-b left-line pt-10"></span>
+            </div>
 
-                        <div class="col">
-                            <div class="logos">
-                                <a href={ sponsor.url } target="_blank">
-                                  <Image width={150} height={150} src={ sponsor.logo } fit="contain" background="white" alt={ sponsor.name } />
-                                </a>
-                            </div>
-                        </div>
-                      ))}
-                  </div>
-              </div>
+            <FullTimeTable lrcode={ team.fa_embeds.table.lrcode } divisionseason={ team.fa_embeds.table.divisionseason } />
           </div>
-      </div>
-  </div>
-  <!-- Sponsor Logo Section End -->
 
-  <!-- Twitter Section Start -->
-  <div class="rs-single-club sec-bg pt-80 pb-80">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 col-md-12 mb-30">
-          <TwitterFeed twitter_handle={ current_team.twitter_handle } />
+          <div class="col-lg-6 col-md-12 mb-30">
+            <div class="title-style mb-20">
+              <h2 class="margin-0 uppercase">Upcoming Fixtures</h2>
+              <span class="line-bg y-b left-line pt-10"></span>
+            </div>
+
+            <FullTimeTable lrcode={ team.fa_embeds.fixtures.lrcode } divisionseason={ team.fa_embeds.fixtures.divisionseason } />
+          </div>
+        </div>
+        </div>
+      </div>
+    <!-- Table/Blog Post Block End -->
+  }
+
+  { team.sponsors &&
+    <!-- Sponsor Logo Section Start -->
+    <div class="rs-sponsor pb-35 md-pb-60 sm-pb-50">
+        <div class="container">
+            <h3 class="pt-30">Team Sponsors</h3>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        {
+                          team.sponsors.map((sponsor) => (
+
+                          <div class="col">
+                              <div class="logos">
+                                  <a href={ sponsor.url } target="_blank">
+                                    <Image width={150} height={150} src={ sponsor.logo } fit="contain" background="white" alt={ sponsor.name } />
+                                  </a>
+                              </div>
+                          </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sponsor Logo Section End -->
+  }
+
+  { team.twitter_handle &&
+    <!-- Twitter Section Start -->
+    <div class="rs-single-club sec-bg pt-80 pb-80">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-12 mb-30">
+            <TwitterFeed twitter_handle={ team.twitter_handle } />
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- Twitter Section End -->
+    <!-- Twitter Section End -->
+  }
 
 </Layout>

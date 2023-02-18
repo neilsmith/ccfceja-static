@@ -4,7 +4,7 @@ import Layout from '../layouts/Layout.astro';
 
 import pitchClaret from '../images/pitch-claret.jpg';
 
-const response = await fetch('https://raw.githubusercontent.com/neilsmith/ccfceja-static/master/public/data.json');
+const response = await fetch('https://raw.githubusercontent.com/neilsmith/ccfceja-static/preview/public/data.json');
 const data = await response.json();
 const teams = data.teams;
 
