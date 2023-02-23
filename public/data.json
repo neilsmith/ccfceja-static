@@ -133,6 +133,18 @@
         { "number": "22", "name": "Teddy Packer" },
         { "number": "21", "name": "Bobby Packer" }
       ]
+    },
+    {
+      "slug": "u18",
+      "name": "U18",
+      "manager_1_position": "Manager",
+      "manager_1_name": "Marc Holland",
+      "manager_2_position": "Assistant Manager",
+      "manager_2_name": "Steve Morritt",
+      "fa_embeds": {
+        "table": { "lrcode": "730661554", "divisionseason": "623044315" },
+        "fixtures": { "lrcode": "120203152", "divisionseason": "623044315" }
+      }
     }
   ]
 }
