@@ -6,7 +6,7 @@ import pitchClaret from '../images/pitch-claret.jpg';
 
 const response = await fetch(import.meta.env.NEWS_URL);
 const data = await response.json();
-const news = data.news;
+const news = data.news.reverse();
 ---
 
 <Layout title="Chelmsford City FC EJA - Contact Us">
