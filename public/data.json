@@ -10,7 +10,7 @@
       "description": "",
       "fa_embeds": {
         "table": { "lrcode": "730265768", "divisionseason": "531020832" },
-        "fixtures": { "lrcode": "811424686", "divisionseason": "531020832" }
+        "fixtures": { "lrcode": "708280924", "divisionseason": "531020832" }
       },
       "players": [
         { "number": "1", "name": "Max Wright" },
@@ -42,7 +42,7 @@
       "photo": "/photos/u14.jpg",
       "fa_embeds": {
         "table": { "lrcode": "419589437", "divisionseason": "489776589" },
-        "fixtures": { "lrcode": "419447721", "divisionseason": "1776309" }
+        "fixtures": { "lrcode": "139871309", "divisionseason": "489776589" }
       },
       "players": [
         { "number": "1", "name": "Oscar Bear" },
