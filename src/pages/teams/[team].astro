@@ -112,14 +112,12 @@ import pitchClaret from '../../images/pitch-claret.jpg';
                     <table>
                       <tbody>
                         <tr>
-                            <th>Number</th>
                             <th>Player</th>
                         </tr>
                         {
                           team.players.map((player) => (
                             <tr>
-                                <td>{ player.number }</td>
-                                <td>{ player.name }</td>
+                              <td>{ player.name }</td>
                             </tr>
                           ))
                         }
