@@ -44,14 +44,16 @@ import pitchClaret from '../../images/pitch-claret.jpg';
   <div class="rs-single-club sec-bg md-pb-80">
     <div class="container">
       <div class="row pt-80">
-        <div class="col-lg-3 col-md-12">
-          <div class="rs-count d-flex justify-content-center mb-60">
-              <div class="rs-counter-list">
-                  <h2 class="counter-number">{ team.players.length }</h2>
-                  <h4 class="counter-text">Squad Size</h4>
-              </div>
+        { team.players &&
+          <div class="col-lg-3 col-md-12">
+            <div class="rs-count d-flex justify-content-center mb-60">
+                <div class="rs-counter-list">
+                    <h2 class="counter-number">{ team.players.length }</h2>
+                    <h4 class="counter-text">Squad Size</h4>
+                </div>
+            </div>
           </div>
-        </div>
+        }
         <div class="col-lg-9 col-md-12">
           <div class="club-details center-md mb-30">
             <ul class="team-info-list">
@@ -79,56 +81,60 @@ import pitchClaret from '../../images/pitch-claret.jpg';
   </div
   <!-- Info Block End -->
 
-  <!-- About/Squad Block Start -->
-  <div class="rs-single-club pt-80 pb-80">
-    <div class="container">
-      <div class="title-style mb-50 md-mb-30">
-        <h2 class="margin-0 uppercase">Meet the { team.name }<small>'s</small></h2>
-        <span class="line-bg y-b left-line pt-10"></span>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-8 col-md-12 md-mb-30 mb-100">
-          <div class="about-wrap">
-            { team.description &&
-              <p class="title-color">
-                { team.description }
-              </p>
-            }
-
-            { team.photo &&
-              <Image src={ team.photo } width={800} height={500} format="jpeg" alt="Team Photo" />
-            }
-          </div>
+  { (team.players || team.description || team.photo) &&
+    <!-- About/Squad Block Start -->
+    <div class="rs-single-club pt-80 pb-80">
+      <div class="container">
+        <div class="title-style mb-50 md-mb-30">
+          <h2 class="margin-0 uppercase">Meet the { team.name }<small>'s</small></h2>
+          <span class="line-bg y-b left-line pt-10"></span>
         </div>
-        <div class="col-lg-4 col-md-12 md-mb-30">
-          <div class="rs-pointtable inner-style condensed">
-            <div class="container">
-              <div class="point-table-wrap">
-                <table>
-                  <tbody>
-                    <tr>
-                        <th>Number</th>
-                        <th>Player</th>
-                    </tr>
-                    {
-                      team.players.map((player) => (
-                        <tr>
-                            <td>{ player.number }</td>
-                            <td>{ player.name }</td>
-                        </tr>
-                      ))
-                    }
-                  </tbody>
-                </table>
-              </div>
+
+        <div class="row">
+          <div class="col-lg-8 col-md-12 md-mb-30 mb-100">
+            <div class="about-wrap">
+              { team.description &&
+                <p class="title-color">
+                  { team.description }
+                </p>
+              }
+
+              { team.photo &&
+                <Image src={ team.photo } width={800} height={500} format="jpeg" alt="Team Photo" />
+              }
             </div>
+          </div>
+          { team.players &&
+            <div class="col-lg-4 col-md-12 md-mb-30">
+              <div class="rs-pointtable inner-style condensed">
+                <div class="container">
+                  <div class="point-table-wrap">
+                    <table>
+                      <tbody>
+                        <tr>
+                            <th>Number</th>
+                            <th>Player</th>
+                        </tr>
+                        {
+                          team.players.map((player) => (
+                            <tr>
+                                <td>{ player.number }</td>
+                                <td>{ player.name }</td>
+                            </tr>
+                          ))
+                        }
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            }
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- About/Squad Block End -->
+    <!-- About/Squad Block End -->
+  }
 
   { team.fa_embeds &&
     <!-- Table/Blog Post Block Start -->
