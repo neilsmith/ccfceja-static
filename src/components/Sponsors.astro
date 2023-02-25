@@ -1,10 +1,24 @@
 ---
+import { Image } from '@astrojs/image/components';
+
 const response = await fetch(import.meta.env.DATA_URL);
 const data = await response.json();
 const teams = data.teams.filter(t => t.sponsors && t.sponsors.length );
 ---
 <div class="rs-sponsor-inner pb-20">
-  { teams.map((team) => (
+    <div class="container pb-50">
+      <div class="title-style text-center mb-50">
+        <h2 class="margin-0 uppercase">Kit</h2>
+        <span class="line-bg y-b pt-10"></span>
+      </div>
+
+      <div class="sponsor-grid" style="text-align: center">
+          <Image src="/photos/steve.jpg" width={500} height={322} fit="outside" alt="" format="webp"></Image>
+      </div>
+    </div>
+  </div>
+
+{ teams.map((team) => (
     <div class="container">
       <div class="title-style text-center mb-50">
         <h2 class="margin-0 uppercase">{ team.name } Sponsors</h2>
