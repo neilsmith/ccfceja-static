@@ -44,7 +44,7 @@ const news = data.news.reverse();
                                 <div class="blog-item mb-70" id={`article-${article.slug}`}">
                                       <div class="blog-img">
                                           <div class="image-wrap">
-                                              <Image src={ article.image } width={400} height={400} fit="contain" position="center" background="grey" format="webp" alt="" />
+                                              <Image src={`${import.meta.env.ASSET_URL}${article.image}`} width={600} height={600} fit="contain" position="center" background="grey" format="webp" alt="" />
                                           </div>
                                           <div class="all-meta">
                                               <div class="meta meta-date">
