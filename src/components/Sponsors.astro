@@ -1,51 +1,64 @@
 ---
-import { Image } from '@astrojs/image/components';
+import { Image } from "@astrojs/image/components";
 
 const response = await fetch(import.meta.env.DATA_URL);
 const data = await response.json();
-const teams = data.teams.filter(t => t.sponsors && t.sponsors.length );
+const teams = data.teams.filter((t) => t.sponsors && t.sponsors.length);
 ---
-<div class="rs-sponsor-inner pb-20">
-    <div class="container pb-50">
-      <div class="title-style text-center mb-50">
-        <h2 class="margin-0 uppercase">Kit</h2>
-        <span class="line-bg y-b pt-10"></span>
-      </div>
 
-      <div class="sponsor-grid" style="text-align: center">
-          <Image src="/photos/steve.jpg" width={500} height={322} fit="outside" alt="" format="webp"></Image>
-      </div>
+<div class="rs-sponsor-inner pb-20">
+  <div class="container pb-50">
+    <div class="title-style text-center mb-50">
+      <h2 class="margin-0 uppercase">Kit</h2>
+      <span class="line-bg y-b pt-10"></span>
+    </div>
+
+    <div class="sponsor-grid" style="text-align: center">
+      <Image
+        src="/photos/steve.jpg"
+        width={500}
+        height={322}
+        fit="outside"
+        alt=""
+        format="webp"
+      />
     </div>
   </div>
-
-{ teams.map((team) => (
-    <div class="container">
-      <div class="title-style text-center mb-50">
-        <h2 class="margin-0 uppercase">{ team.name } Sponsors</h2>
-        <span class="line-bg y-b pt-10"></span>
-      </div>
-
-      <div class="sponsor-grid">
-        <div class="row rs-vertical-middle">
-          { team.sponsors.map((sponsor) => (
-            <div class="col sm-mb-30">
-              <div class="sponsor-item">
-                <a href={ sponsor.url} target="_blank">
-                  <img src={ sponsor.logo } alt={ sponsor.name }>
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  ))}
 </div>
 
-<style lang="scss">
-.sponsor-item {
-  img {
-    max-height: 130px;
-  }
+{
+  teams.map((team) => (
+  <!-- Sponsor Logo Section Start -->
+    <div class="rs-sponsor pb-35 md-pb-60 sm-pb-50">
+        <div class="container">
+            <h3 class="pt-30 text-center">{ team.name } Sponsors</h3>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        {
+                          team.sponsors.map((sponsor) => (
+
+                          <div class="col">
+                              <div class="logos">
+                                  <a href={ sponsor.url } target="_blank">
+                                    <Image width={150} height={150} src={`${import.meta.env.ASSET_URL}${sponsor.image}` } fit="contain" background="white" alt={ sponsor.name } />
+                                  </a>
+                              </div>
+                          </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sponsor Logo Section End -->
+  ))
 }
+
+<style lang="scss">
+  .sponsor-item {
+    img {
+      max-height: 130px;
+    }
+  }
 </style>
