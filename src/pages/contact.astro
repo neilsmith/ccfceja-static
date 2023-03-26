@@ -1,113 +1,156 @@
 ---
-import { Image } from '@astrojs/image/components';
-import Layout from '../layouts/Layout.astro';
+import { Image } from "@astrojs/image/components";
+import Layout from "../layouts/Layout.astro";
 
-import pitchClaret from '../images/pitch-claret.jpg';
+import pitchClaret from "../images/pitch-claret.jpg";
 
 const response = await fetch(import.meta.env.DATA_URL);
 const data = await response.json();
 const teams = data.teams;
-
 ---
 
 <Layout title="Chelmsford City FC EJA - Contact Us">
   <!-- Breadcrumbs Section Start -->
   <div class="rs-breadcrumbs">
-      <div class="breadcrumbs-wrap">
-          <Image src={ pitchClaret } width={1024} height={200} fit="cover" position="east" alt=""></Image>
-          <div class="breadcrumbs-inner">
-              <div class="container">
-                  <div class="breadcrumbs-text">
-                      <h1 class="breadcrumbs-title mb-17">Contact Us</h1>
-                      <div class="categories">
-                          <ul>
-                              <li><a href="/">Home</a></li>
-                              <li class="active">Contact Us</li>
-                          </ul>
-                      </div>
-                  </div>
-              </div>
+    <div class="breadcrumbs-wrap">
+      <Image
+        src={pitchClaret}
+        width={1024}
+        height={200}
+        fit="cover"
+        position="east"
+        alt=""
+      />
+      <div class="breadcrumbs-inner">
+        <div class="container">
+          <div class="breadcrumbs-text">
+            <h1 class="breadcrumbs-title mb-17">Contact Us</h1>
+            <div class="categories">
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li class="active">Contact Us</li>
+              </ul>
+            </div>
           </div>
+        </div>
       </div>
+    </div>
   </div>
   <!-- Breadcrumbs Section End -->
 
   <div class="rs-contact">
     <div class="contact-part sec-bg pt-100 pb-100 md-pt-80 md-pb-80">
       <div class="container">
-          <div class="row">
-              <div class="col-lg-6 md-mb-30">
-                  <div class="g-map">
-                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9879.921575386752!2d0.4418807683609993!3d51.75168207967597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8eb9356d18371%3A0x7bf92e75d034962b!2sChelmsford%20City%20Football%20Club!5e0!3m2!1sen!2suk!4v1676136502073!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                  </div>
-              </div>
-              <div class="col-lg-6 pl-50 md-pl-15">
-                  <div class="contact-area">
-                      <div class="title-style mb-50">
-                          <h2 class="margin-0 uppercase">Contact Us</h2>
-                          <span class="line-bg left-line pt-10 y-b"></span>
-                      </div>
-                      <div id="form-messages"></div>
-                      <form id="contact-form" class="contact-form" method="post" action="#">
-                          <div class="row">
-                              <div class="col-lg-6">
-                                  <div class="from-control">
-                                      <input name="name" type="text" placeholder="Your Name" id="name" required="required">
-                                  </div>
-                              </div>
-                              <div class="col-lg-6">
-                                  <div class="from-control">
-                                      <input name="email" type="email" placeholder="Your E-Mail" id="email" required="required">
-                                  </div>
-                              </div>
-                          </div>
-
-                          <div class="from-control">
-                              <select name="message" class="form-select">
-                                <option>General Enquiry</option>
-                                {
-                                  teams.map((team) => (
-                                    <option>{ team.name } Manager</option>
-                                  ))
-                                }
-
-                              </select>
-                          </div>
-
-                          <div class="from-control">
-                              <textarea name="message" placeholder="Your Message" id="message" required="required"></textarea>
-                          </div>
-                          <div class="submit-btn">
-                              <button class="readon" type="submit">Send Message</button>
-                          </div>
-                      </form>
-                  </div>
-              </div>
+        <div class="row">
+          <div class="col-lg-6 md-mb-30">
+            <div class="g-map">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9879.921575386752!2d0.4418807683609993!3d51.75168207967597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8eb9356d18371%3A0x7bf92e75d034962b!2sChelmsford%20City%20Football%20Club!5e0!3m2!1sen!2suk!4v1676136502073!5m2!1sen!2suk"
+                width="600"
+                height="450"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
           </div>
+          <div class="col-lg-6 pl-50 md-pl-15">
+            <div class="contact-area">
+              <div class="title-style mb-50">
+                <h2 class="margin-0 uppercase">Contact Us</h2>
+                <span class="line-bg left-line pt-10 y-b"></span>
+              </div>
+              <div id="form-messages"></div>
+              <form
+                id="contact-form"
+                class="contact-form"
+                method="post"
+                action="#"
+              >
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="from-control">
+                      <input
+                        name="name"
+                        type="text"
+                        placeholder="Your Name"
+                        id="name"
+                        required="required"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="from-control">
+                      <input
+                        name="email"
+                        type="email"
+                        placeholder="Your E-Mail"
+                        id="email"
+                        required="required"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="from-control">
+                  <select name="message" class="form-select">
+                    <option>General Enquiry</option>
+                    {teams.map((team) => <option>{team.name} Manager</option>)}
+                  </select>
+                </div>
+
+                <div class="from-control">
+                  <textarea
+                    name="message"
+                    placeholder="Your Message"
+                    id="message"
+                    required="required"></textarea>
+                </div>
+                <div class="submit-btn">
+                  <button class="readon" type="submit">Send Message</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </Layout>
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+></script>
 
 <script>
-  (function() {
-    emailjs.init('ujFakB0O_QRPFqvtF');
+  (function () {
+    emailjs.init("ujFakB0O_QRPFqvtF");
   })();
 </script>
 
-<script>
-    window.onload = function() {
-          document.getElementById('contact-form').addEventListener('submit', function(event) {
-            document.getElementById('contact-form').innerHTML = "<h6>Sending ...</h6>";
-              event.preventDefault();
-              emailjs.sendForm('service_z6s90jd', 'template_9bsb72k', this)
-                  .then(function() {
-                      document.getElementById('contact-form').innerHTML = "<h6>Thank you - your message has been sent</h6>"
-                  }, function(error) {
-                      document.getElementById('contact-form').innerHTML = "<h6>Sorry, there was a problem sending your message. Please try again later.</h6>"
-                  });
-          });
-      }
-  </script>
+<script is:inline>
+  window.onload = function () {
+    document
+      .getElementById("contact-form")
+      .addEventListener("submit", function (event) {
+        document.getElementById("contact-form").style.cssText =
+          "visibility: hidden";
+        document.getElementById("form-messages").innerHTML =
+          "<h6>Sending ...</h6>";
+        event.preventDefault();
+        emailjs
+          .sendForm("service_z6s90jd", "template_9bsb72k", "#contact-form")
+          .then(
+            function () {
+              document.getElementById("form-messages").innerHTML =
+                "<h6>Thank you - your message has been sent</h6>";
+            },
+            function (error) {
+              document.getElementById("form-messages").innerHTML =
+                "<h6>Sorry, there was a problem sending your message. Please try again later.</h6>";
+            }
+          );
+      });
+  };
+</script>
