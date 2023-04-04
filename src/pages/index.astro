@@ -1,74 +1,112 @@
 ---
 // Components
-import { Image } from '@astrojs/image/components';
-import Layout from '../layouts/Layout.astro';
-import Sponsors from '../components/Sponsors.astro'
+import { Image } from "@astrojs/image/components";
+import Layout from "../layouts/Layout.astro";
+import TwitterFeed from "../components/TwitterFeed.astro";
+import Sponsors from "../components/Sponsors.astro";
 
 // Images
-import pitch from '../images/pitch.jpg';
-import pitchClaret from '../images/pitch-claret.jpg';
+import pitch from "../images/pitch.jpg";
+import pitchClaret from "../images/pitch-claret.jpg";
 ---
 
 <Layout title="Chelmsford City FC EJA">
   <!-- Breadcrumbs Section Start -->
   <div class="rs-breadcrumbs">
-      <div class="breadcrumbs-wrap">
+    <div class="breadcrumbs-wrap">
+      <Image
+        src={pitchClaret}
+        width={1420}
+        height={277}
+        fit="cover"
+        position="east"
+        format="webp"
+        alt=""
+      />
 
-        <Image src={pitchClaret} width={1420} height={277} fit="cover" position="east" format="webp" alt="" />
-
-          <div class="breadcrumbs-inner">
-              <div class="container">
-                  <div class="breadcrumbs-text">
-                      <!-- <h1 class="breadcrumbs-title mb-17">About</h1> -->
-                      <div class="categories">
-                          <ul>
-                              <li><a href="/">Home</a></li>
-                              <!-- <li class="active">About</li> -->
-                          </ul>
-                      </div>
-                  </div>
-              </div>
+      <div class="breadcrumbs-inner">
+        <div class="container">
+          <div class="breadcrumbs-text">
+            <!-- <h1 class="breadcrumbs-title mb-17">About</h1> -->
+            <div class="categories">
+              <ul>
+                <li><a href="/">Home</a></li>
+                <!-- <li class="active">About</li> -->
+              </ul>
+            </div>
           </div>
+        </div>
       </div>
+    </div>
   </div>
   <!-- Breadcrumbs Section End -->
 
   <!-- About Section Start -->
   <div class="rs-about pt-100 pb-100 md-pt-80 md-pb-73">
-      <div class="container">
-          <div class="row align-items-center">
-              <div class="col-lg-5 md-mb-30">
-                  <div class="about-img">
-                    <Image src={pitch} width={487} height={454} fit="outside" alt=""></Image>
-                  </div>
-              </div>
-              <div class="col-lg-7 pl-40 col-padding-md">
-                  <div class="title-style mb-50 md-mb-30">
-                      <h2 class="margin-0 uppercase">Chelmsford City FC EJA Section</h2>
-                      <span class="line-bg y-b left-line pt-10"></span>
-                  </div>
-                  <div class="about-wrap">
-                    <h6>What is the EJA?</h6>
-                    <p class="title-color">
-                      The Eastern Junior Alliance is the leading youth development football league in the
-                      South East of England for ages U13-U18. Its purpose being the stepping stone between
-                      regular youth grassroots to the academy levels of the professional ranks.
-                    </p>
-
-                    <h6>Who are we?</h6>
-                    <p class="title-color">
-                      Our section is comprised of our oldest youth teams who play at the most competitive grassroots levels.
-                      At Chelmsford City we offer the opportunity to improve playing ability within a safe & encouraging environment.
-                      We strongly believe in the long-term development of players & want every young person to achieve their full potential.
-                      At CCFC we strive to promote fair play, respect and positivity.
-                    </p>
-                  </div>
-              </div>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-5 md-mb-30">
+          <div class="about-img">
+            <Image src={pitch} width={487} height={454} fit="outside" alt="" />
           </div>
+        </div>
+        <div class="col-lg-7 pl-40 col-padding-md">
+          <div class="title-style mb-50 md-mb-30">
+            <h2 class="margin-0 uppercase">Chelmsford City FC EJA Section</h2>
+            <span class="line-bg y-b left-line pt-10"></span>
+          </div>
+          <div class="about-wrap">
+            <h6>What is the EJA?</h6>
+            <p class="title-color">
+              The Eastern Junior Alliance is the leading youth development
+              football league in the South East of England for ages U13-U18. Its
+              purpose being the stepping stone between regular youth grassroots
+              to the academy levels of the professional ranks.
+            </p>
+
+            <h6>Who are we?</h6>
+            <p class="title-color">
+              Our section is comprised of our oldest youth teams who play at the
+              most competitive grassroots levels. At Chelmsford City we offer
+              the opportunity to improve playing ability within a safe &
+              encouraging environment. We strongly believe in the long-term
+              development of players & want every young person to achieve their
+              full potential. At CCFC we strive to promote fair play, respect
+              and positivity.
+            </p>
+          </div>
+        </div>
       </div>
+    </div>
   </div>
   <!-- About Section End -->
 
-  <Sponsors />
+  <div class="rs-single-club sec-bg pt-80 pb-80">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-12">
+          <TwitterFeed twitter_handle="ChelmsfordEJA" />
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <div class="title-style mb-20 pl-40">
+            <h2 class="margin-0 uppercase">Kit</h2>
+            <span class="line-bg y-b left-line pt-10"></span>
+          </div>
 
+          <div class="sponsor-grid" style="text-align: center">
+            <Image
+              src="/photos/steve.jpg"
+              width={500}
+              height={322}
+              fit="outside"
+              alt=""
+              format="webp"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <Sponsors />
+  </div>
 </Layout>

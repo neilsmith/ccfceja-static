@@ -6,25 +6,7 @@ const data = await response.json();
 const teams = data.teams.filter((t) => t.sponsors && t.sponsors.length);
 ---
 
-<div class="rs-sponsor-inner pb-20">
-  <div class="container pb-50">
-    <div class="title-style text-center mb-50">
-      <h2 class="margin-0 uppercase">Kit</h2>
-      <span class="line-bg y-b pt-10"></span>
-    </div>
-
-    <div class="sponsor-grid" style="text-align: center">
-      <Image
-        src="/photos/steve.jpg"
-        width={500}
-        height={322}
-        fit="outside"
-        alt=""
-        format="webp"
-      />
-    </div>
-  </div>
-</div>
+<br />
 
 {
   teams.map((team) => (
