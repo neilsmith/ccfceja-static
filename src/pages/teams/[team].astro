@@ -100,8 +100,8 @@ import pitchClaret from '../../images/pitch-claret.jpg';
                 </p>
               }
 
-              { team.photo &&
-                <Image src={ team.photo } width={800} height={500} format="jpeg" alt="Team Photo" />
+              { team.team_photo &&
+                <Image src={ import.meta.env.ASSET_URL + team.team_photo } width={800} height={500} format="jpeg" alt="Team Photo" />
               }
             </div>
           </div>
@@ -163,7 +163,7 @@ import pitchClaret from '../../images/pitch-claret.jpg';
     <!-- Table/Blog Post Block End -->
   }
 
-  { team.sponsors &&
+  { team.sponsors.size &&
     <!-- Sponsor Logo Section Start -->
     <div class="rs-sponsor pb-35 md-pb-60 sm-pb-50">
         <div class="container">
@@ -177,7 +177,7 @@ import pitchClaret from '../../images/pitch-claret.jpg';
                           <div class="col">
                               <div class="logos">
                                   <a href={ sponsor.url } target="_blank">
-                                    <Image width={150} height={150} src={ sponsor.logo } fit="contain" background="white" alt={ sponsor.name } />
+                                    <Image width={150} height={150} src={ import.meta.env.ASSET_URL + sponsor.image } fit="contain" background="white" alt={ sponsor.name } />
                                   </a>
                               </div>
                           </div>
